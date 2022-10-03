@@ -38,10 +38,10 @@ void connectAWS()
  
   WiFi.mode(WIFI_STA);
   WiFi.begin(WIFI_SSID_1, WIFI_PASSWORD_1);
-
+    delay(2500);
   Serial.println("Connecting to Wi-Fi");
   while (WiFi.status() != WL_CONNECTED){
-    delay(1500);
+    
     Serial.print(".");
     
     WiFi.begin(WIFI_SSID_2, WIFI_PASSWORD_2);
