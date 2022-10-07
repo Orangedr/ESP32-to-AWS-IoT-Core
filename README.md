@@ -21,7 +21,7 @@ This is a derivative from the AWS example code for ESP32, the code is modified t
 2. Calculate RMP (Revolutions Per Minute) based on the pulse counts on Pin 32, the RMP will be sent to AWS IoT Core
 3. Gather digital reading on Pin 35, on which pin you can connect a digital sensor that display critical reading that you want to monitor
 4. The sensor data would converge to the function publishMessage(), where you can add or take away the data you want to send to AWS IoT Core, but please refer to ESP32 GPIO instruction to make sure you are using the correct pin number, you can't use ADC2 pins because of WIFI module.
-5. There are 2 pair of WiFi connection, if the first one failed it will try to connect the second one. **There may be some bugs in this because I didn't test the loop, but it works for me at 1500ms delay.**
+5. There are 2 pair of WiFi connection, if the first one failed it will try to connect the second one. 
    
 ## Caution:
 * The Pin 33 and 32 are at Pull up mode and connect to a NPN sensor in this project, change the input mode as you need.
