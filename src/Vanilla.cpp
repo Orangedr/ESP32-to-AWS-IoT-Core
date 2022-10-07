@@ -37,18 +37,22 @@ void connectAWS()
 // connect wifi use WIFI_SSID_1 and WIFI_PASSWORD_1, if not connect use WIFI_SSID_2 and WIFI_PASSWORD_2 
  
   WiFi.mode(WIFI_STA);
+  while (WiFi.status() != WL_CONNECTED) {
+    // WiFi.begin(WIFI_SSID_1, WIFI_PASSWORD_1);
+    // delay(1000);
+  
   WiFi.begin(WIFI_SSID_1, WIFI_PASSWORD_1);
+
+  Serial.println("Connecting to WiFi-1");
     delay(2500);
-  Serial.println("Connecting to Wi-Fi");
-  while (WiFi.status() != WL_CONNECTED){
-    
-    Serial.print(".");
+
+  if (WiFi.status() != WL_CONNECTED){
+    Serial.print("Connecting to WIFI_2");
     
     WiFi.begin(WIFI_SSID_2, WIFI_PASSWORD_2);
-    Serial.println("Connected to Wi-Fi 2");
-    delay(1500);
+    delay(2500);
+   }
   }
-
   // Configure WiFiClientSecure to use the AWS IoT device credentials
   net.setCACert(AWS_CERT_CA);
   net.setCertificate(AWS_CERT_CRT);
@@ -60,7 +64,7 @@ void connectAWS()
   // Create a message handler
   // client.onMessage(messageHandler);
 
-  Serial.print("Connecting to AWS IOT");
+  Serial.println("Connecting to AWS IOT");
 
   while (!client.connect(THINGNAME)) {
     Serial.print(".");
